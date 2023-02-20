@@ -1,11 +1,12 @@
 ---
 title: "Visualizing Data"
-output:
-  html_document:
-    df_print: paged
+format:
+  html:
+    df-print: paged
 ---
 
-```{r setup}
+```{r}
+#| label: setup
 library(tidyverse)
 diabetes <- read_csv("diabetes.csv")
 ```
@@ -18,7 +19,7 @@ diabetes <- read_csv("diabetes.csv")
 4. Change the legend title for the color legend. Use the `name` argument in whatever scale function you're using.
 
 ```{r}
-diabetes %>% 
+diabetes |> 
   ggplot(aes(waist, hip, color = weight)) + 
   geom_point() +
   scale_color_viridis_c()
@@ -32,7 +33,7 @@ diabetes %>%
 4. Change the font size for the axis titles. Use `element_text()`. Check the help page if you don't know what option to change.
 
 ```{r}
-diabetes %>% 
+diabetes |> 
   ggplot(aes(waist, hip, color = weight)) + 
   geom_point() 
 ```
@@ -81,7 +82,8 @@ Save the last plot and then locate it in the files pane.
 
 You can use this code template to make thousands of graphs with **ggplot2**. You may not even need to add scales and themes!
 
-```{r eval = FALSE}
+```{r}
+#| eval: false
 ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>)) +
   <SCALE_FUNCTION>() + 
